@@ -38,4 +38,32 @@ router.delete("/students/:id", (req, res) => {
   res.send("Student deleted")
 })
 
+// /students - create student
+router.post("/students", (req, res) => {
+
+  // Random 0-9999
+  // const nextId = Math.floor(Math.random() * 10000)
+
+  // Random ID
+  // const nextId = crypto.randomUUID()
+
+  // Next highest id in database
+  let nextId = 0
+
+  database.forEach(student => {
+    nextId = Math.max(nextId, student.id)
+  })
+
+  nextId = nextId + 1
+
+  const student = {
+    id: nextId,
+    name: req.body.name
+  }
+
+  database.push(student)
+
+  res.status(201).json(student)
+})
+
 export default router
