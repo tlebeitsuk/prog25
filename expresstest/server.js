@@ -4,6 +4,9 @@ import studentsRouter from "./routes/students.js"
 
 const app = express()
 
+// Parse incoming JSON request bodies
+app.use(express.json())
+
 app.use("/", exampleRouter)
 app.use("/", studentsRouter)
 
