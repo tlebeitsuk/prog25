@@ -1,4 +1,5 @@
 import express from "express"
+import cors from "cors"
 import exampleRouter from "./routes/examples.js"
 import studentsRouter from "./routes/students.js"
 
@@ -6,6 +7,9 @@ const app = express()
 
 // Parse incoming JSON request bodies
 app.use(express.json())
+
+// Enable CORS
+app.use(cors())
 
 app.use("/", exampleRouter)
 app.use("/", studentsRouter)
