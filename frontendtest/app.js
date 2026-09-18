@@ -6,6 +6,9 @@ async function getStudents() {
 
   const list = document.querySelector("#students")
 
+  // Empty list before creating list items (used by new student)
+  list.innerHTML = ""
+
   students.forEach(student => {
     const li = document.createElement("li")
     const deleteButton = document.createElement("button")
@@ -19,20 +22,20 @@ async function getStudents() {
       await fetch(`${backend}/students/${student.id}`, {
         method: "DELETE"
       })
-      
-     li.remove()
+
+      li.remove()
     })
 
     editButton.addEventListener("click", async () => {
       const newName = prompt("New name:")
-      
+
       await fetch(`${backend}/students/${student.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-           name: newName
+          name: newName
         })
       })
 
@@ -47,3 +50,22 @@ async function getStudents() {
 
 getStudents()
 
+const newButton = document.querySelector("#new-button")
+
+newButton.addEventListener("click", async () => {
+  const name = prompt("Name")
+
+  const response = await fetch(`${backend}/students`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name, // same as name: name
+    })
+  })
+
+  // const newStudent = await response.json()
+
+  getStudents()
+})
