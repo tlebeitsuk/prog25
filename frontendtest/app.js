@@ -11,12 +11,17 @@ async function getStudents() {
 
   students.forEach(student => {
     const li = document.createElement("li")
+    const link = document.createElement("a")
     const deleteButton = document.createElement("button")
     const editButton = document.createElement("button")
 
-    li.textContent = student.name
+    link.textContent = student.name
     deleteButton.textContent = "Delete"
+    deleteButton.className = "btn btn-danger"
     editButton.textContent = "Edit"
+    editButton.className = "btn btn-primary"
+
+    link.href = `student.html?id=${student.id}`
 
     deleteButton.addEventListener("click", async () => {
       await fetch(`${backend}/students/${student.id}`, {
@@ -42,6 +47,7 @@ async function getStudents() {
       li.firstChild.textContent = newName
     })
 
+    li.append(link)
     li.append(editButton)
     li.append(deleteButton)
     list.append(li)
