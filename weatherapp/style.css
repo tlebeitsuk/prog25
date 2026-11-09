@@ -1,0 +1,73 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #25282d;
+    background: #f5f2f0;
+}
+
+.screen {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 38px;
+}
+
+header,
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24px;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.temperature {
+    margin: 0;
+    font-size: clamp(400px, 60vw, 800px);
+    font-weight: 800;
+    line-height: 0.85;
+    letter-spacing: -0.125em;
+    color: transparent;
+    background-image: url("clouds-at-sunset.jpg");
+    background-size: cover;
+    background-position: center;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.temperature #symbol {
+    font-size: 0.3em;
+    vertical-align: top;
+    letter-spacing: 0;
+}
+
+footer {
+    font-size: 24px;
+}
+
+@media (max-width: 600px) {
+    .screen {
+        padding: 24px;
+    }
+
+    header,
+    footer {
+        font-size: 16px;
+    }
+
+    .temperature {
+        font-size: 64vw;
+    }
+}

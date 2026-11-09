@@ -1,0 +1,36 @@
+.row {
+    display: grid;
+    gap: 16px;
+}
+
+.shorts {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.videos {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+img {
+    width: 100%;
+}
+
+.shorts img {
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+}
+
+.videos img {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+@media (max-width: 600px) {
+    .shorts {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .videos {
+        grid-template-columns: 1fr;
+    }
+}
